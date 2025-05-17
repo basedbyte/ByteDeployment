@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Eye, EyeOff, ChevronLeft, UserRound, Lock, Check } from "lucide-react";
+import { Eye, EyeOff, ChevronLeft, UserRound, Mail, Lock, Check } from "lucide-react";
 import Image from "next/image";
 
 interface MoreOptionsViewProps {
@@ -28,13 +28,21 @@ const MoreOptionsView = ({
   const [serverError, setServerError] = useState("");
   const [success, setSuccess] = useState(false);
 
+  // Helper to check email format
+  const isEmail = (value: string) =>
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+
   // Validate fields and set error messages
   const validate = (field?: string) => {
     let usernameError = "";
     let passwordError = "";
 
     if (!formData.username) {
-      usernameError = "Username is required";
+      usernameError = mode === "signup"
+        ? "Email is required"
+        : "Username or email is required";
+    } else if (mode === "signup" && !isEmail(formData.username)) {
+      usernameError = "Please enter a valid email address";
     }
 
     if (!formData.password) {
@@ -43,7 +51,6 @@ const MoreOptionsView = ({
       passwordError = "Password must be at least 6 characters";
     }
 
-    // Only set error for the field being validated, or all if not specified
     if (!field || field === "username") setErrorMessageUsername(usernameError);
     if (!field || field === "password") setErrorMessagePassword(passwordError);
 
@@ -88,8 +95,6 @@ const MoreOptionsView = ({
       } else {
         setSuccess(true);
         setServerError("");
-        // Optionally, redirect or update UI here
-        // onViewChange("main");
       }
     } catch {
       setServerError("Network error. Please try again.");
@@ -130,17 +135,21 @@ const MoreOptionsView = ({
           <div className="relative w-[90%] mx-auto mb-8">
             <div className={`flex flex-nowrap items-center border rounded-md overflow-hidden ${touched.username && errorMessageUsername ? "border-red-300" : "border-green-300"}`}>
               <div className="px-2 sm:px-3 py-3 flex-shrink-0">
-                <UserRound size={16} className="text-gray-500" />
+                {mode === "signup" ? (
+                  <Mail size={16} className="text-gray-500" />
+                ) : (
+                  <UserRound size={16} className="text-gray-500" />
+                )}
               </div>
               <input
-                type="text"
+                type={mode === "signup" ? "email" : "text"}
                 name="username"
                 value={formData.username}
                 onChange={handleInputChange}
-                placeholder="Username"
+                placeholder={mode === "signup" ? "Email" : "Username or Email"}
                 className={`flex-1 min-w-0 outline-none px-2 sm:px-3 py-2 text-black h-[50px] sm:h-[60px] border-l ${touched.username && errorMessageUsername ? "border-l-red-300" : "border-l-green-300"}`}
                 onBlur={handleBlur}
-                autoComplete="username"
+                autoComplete={mode === "signup" ? "email" : "username"}
               />
               {/* Show check icon if touched and no error */}
               {touched.username && !errorMessageUsername && (
