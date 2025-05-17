@@ -1,6 +1,10 @@
+"use client";
 import React, { useState } from "react";
 import { Eye, EyeOff, ChevronLeft, UserRound, Mail, Lock, Check } from "lucide-react";
 import Image from "next/image";
+
+
+import { loginOrSignup } from "../server-actions/authActions"; 
 
 interface MoreOptionsViewProps {
   mode: "login" | "signup";
@@ -77,20 +81,11 @@ const MoreOptionsView = ({
     setLoading(true);
 
     try {
-      const endpoint = mode === "login" ? "/api/login" : "/api/signup";
-      const res = await fetch(endpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          username: formData.username,
-          password: formData.password,
-        }),
-      });
+      // Call the server action directly
+      const result = await loginOrSignup(mode, formData.username, formData.password);
 
-      const data = await res.json();
-
-      if (!res.ok) {
-        setServerError(data.error || "Something went wrong.");
+      if (result.error) {
+        setServerError(result.error);
         setSuccess(false);
       } else {
         setSuccess(true);
