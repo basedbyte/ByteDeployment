@@ -2,10 +2,7 @@
 import { Upload } from "lucide-react";
 import React, { useRef, useState } from "react";
 
-interface ProfileProps {
-  mode: "login" | "signup";
-  onViewChange: (view: "main" | "more-options") => void;
-}
+
 
 const initialSkills = [
   "Frontend",
@@ -15,7 +12,7 @@ const initialSkills = [
   "Content",
 ];
 
-const Profile = ({ mode, onViewChange }: ProfileProps) => {
+const Profile = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [skills, setSkills] = useState<string[]>(initialSkills);
   const [skillInput, setSkillInput] = useState("");

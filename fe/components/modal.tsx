@@ -92,8 +92,6 @@
             )}
             {currentView === "profile" && (
               <Profile
-                mode={mode}
-                onViewChange={setCurrentView}
               />
             )}
             {(currentView === "main" || currentView === "more-options" || currentView === "wallet") && (

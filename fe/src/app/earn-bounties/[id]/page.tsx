@@ -1,16 +1,14 @@
 'use client';
 
-import { useParams, useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import Navbar from '@components/navbar';
 import React from 'react';
-import { MessageCircle, BriefcaseBusiness, MessageSquare  } from 'lucide-react';
+import { MessageCircle, BriefcaseBusiness, MessageSquare } from 'lucide-react';
 
 const BountyDetailsPage = () => {
-  const { id } = useParams();
   const searchParams = useSearchParams();
 
   const title = searchParams.get('title') || 'Untitled Bounty';
-  const reward = searchParams.get('reward') || 'N/A';
   const due = searchParams.get('due') || 'N/A';
   const comments = searchParams.get('comments') || '0';
 
@@ -21,69 +19,72 @@ const BountyDetailsPage = () => {
       <div className="max-w-[1100px] w-full mx-auto grid grid-cols-[65%_1px_auto] gap-0 px-8 pt-6 pb-12">
         {/* Left Section */}
         <div className="">
-                <div className="w-full flex items-center gap-3 pb-10 text-[20px]">
-                    <div className="w-9 h-9 rounded-full bg-pink-500 text-white flex items-center justify-center text-sm font-bold uppercase">
-                    {title.charAt(0)}
-                    </div>
-                    <div>
-                        <h3 className="text-2xl font-bold leading-tight">
-                            {title} <br/> 
-                        </h3>
-                        <div className='flex text-sm text-gray-500 items-center gap-2'>
-                            <p className='font-normal'>By Base Network</p>
-                            <p className="text-gray-200"> | </p>
-                            <p className="text-[#0C9653]">Open</p>
-                            <p className="text-gray-200"> | </p>
-                            <p className='flex flex-row items-center justify-center gap-1 text-[12px]'><MessageSquare size={15}/>{comments}</p>
-                        </div>
-                    </div>
-                </div>
+          <div className="w-full flex items-center gap-3 pb-10 text-[20px]">
+            <div className="w-9 h-9 rounded-full bg-pink-500 text-white flex items-center justify-center text-sm font-bold uppercase">
+              {title.charAt(0)}
+            </div>
+            <div>
+              <h3 className="text-2xl font-bold leading-tight">
+                {title} <br />
+              </h3>
+              <div className="flex text-sm text-gray-500 items-center gap-2">
+                <p className="font-normal">By Base Network</p>
+                <p className="text-gray-200"> | </p>
+                <p className="text-[#0C9653]">Open</p>
+                <p className="text-gray-200"> | </p>
+                <p className="flex flex-row items-center justify-center gap-1 text-[12px]">
+                  <MessageSquare size={15} />
+                  {comments}
+                </p>
+              </div>
+            </div>
+          </div>
           <div className="w-full h-[2px] bg-black mb-5" />
 
-            <p className="text-sm font-semibold text-black leading-relaxed mb-6 pr-8">
-                We’re looking for a creative and clean Hero Section UI design for an upcoming NFT Marketplace. This is the first thing users will see—so it must be visually striking, web3-native, and conversion-focused.
-            </p>
+          <p className="text-sm font-semibold text-black leading-relaxed mb-6 pr-8">
+            We&apos;re looking for a creative and clean Hero Section UI design for an upcoming NFT Marketplace. This is the first thing users will see&mdash;so it must be visually striking, web3-native, and conversion-focused.
+          </p>
 
-            <h2 className="text-lg font-semibold mb-3">Bounty Details</h2>
-            <p className="text-sm text-gray-800 mb-4 leading-snug pr-8">
-                Design an eye-catching and Web3-native Hero Section for an NFT Marketplace landing page. This section will be the first thing users see when visiting the site—so it needs to hook attention, clearly communicate the platform's value, and guide users to explore or connect their wallet.
-            </p>
-            <p className="text-sm text-gray-800 mb-6 leading-snug pr-8">
-                You can get creative with layout, colors, or visuals as long as the result looks modern, clean, and optimized for onboarding new users to the NFT space.
-            </p>
+          <h2 className="text-lg font-semibold mb-3">Bounty Details</h2>
+          <p className="text-sm text-gray-800 mb-4 leading-snug pr-8">
+            Design an eye-catching and Web3-native Hero Section for an NFT Marketplace landing page. This section will be the first thing users see when visiting the site&mdash;so it needs to hook attention, clearly communicate the platform&apos;s value, and guide users to explore or connect their wallet.
+          </p>
+          <p className="text-sm text-gray-800 mb-6 leading-snug pr-8">
+            You can get creative with layout, colors, or visuals as long as the result looks modern, clean, and optimized for onboarding new users to the NFT space.
+          </p>
 
-            <h2 className="text-lg font-semibold mb-3 ">Content Thought-Starters</h2>
+          <h2 className="text-lg font-semibold mb-3 ">Content Thought-Starters</h2>
 
-            <h3 className="text-base font-bold mb-2">Essential Elements:</h3>
-            <ul className="list-disc list-inside mb-4 text-sm text-gray-800 space-y-1">
-                <li>Headline that communicates purpose/value</li>
-                <li>Subheading with supporting context</li>
-                <li>CTA buttons: "Explore NFTs", "Connect Wallet"</li>
-                <li>Visuals: NFT artwork, carousel, animation, or abstract design</li>
-            </ul>
+          <h3 className="text-base font-bold mb-2">Essential Elements:</h3>
+          <ul className="list-disc list-inside mb-4 text-sm text-gray-800 space-y-1">
+            <li>Headline that communicates purpose/value</li>
+            <li>Subheading with supporting context</li>
+            <li>CTA buttons: &quot;Explore NFTs&quot;, &quot;Connect Wallet&quot;</li>
+            <li>Visuals: NFT artwork, carousel, animation, or abstract design</li>
+          </ul>
 
-            <h3 className="text-base font-bold mb-2">Design Vibes:</h3>
-            <ul className="list-disc list-inside mb-4 text-sm text-gray-800 space-y-1">
-                <li>Futuristic and minimal (Web3 aesthetic)</li>
-                <li>Dark mode or high-contrast light mode</li>
-                <li>Suggested colors: Electric blue, purple, deep gray</li>
-            </ul>
+          <h3 className="text-base font-bold mb-2">Design Vibes:</h3>
+          <ul className="list-disc list-inside mb-4 text-sm text-gray-800 space-y-1">
+            <li>Futuristic and minimal (Web3 aesthetic)</li>
+            <li>Dark mode or high-contrast light mode</li>
+            <li>Suggested colors: Electric blue, purple, deep gray</li>
+          </ul>
 
-            <h3 className="text-base font-bold mb-2">User Experience Goals:</h3>
-            <ul className="list-disc list-inside mb-6 text-sm text-gray-800 space-y-1">
-                <li>Easy to understand what the platform does</li>
-                <li>Smooth layout hierarchy and visual clarity</li>
-                <li>Inspires trust and curiosity</li>
-            </ul>
+          <h3 className="text-base font-bold mb-2">User Experience Goals:</h3>
+          <ul className="list-disc list-inside mb-6 text-sm text-gray-800 space-y-1">
+            <li>Easy to understand what the platform does</li>
+            <li>Smooth layout hierarchy and visual clarity</li>
+            <li>Inspires trust and curiosity</li>
+          </ul>
 
-            <h2 className="text-lg font-semibold mb-3">Evaluation Criteria</h2>
-            <p className="text-sm text-gray-800 italic mb-6 pr-8">
-                <span className="font-bold">Clarity:</span> Does the design communicate what the site is about at a glance? <br />
-                <span className="font-bold">Visual Quality:</span> Is the layout professional, modern, and aesthetically aligned with top NFT marketplaces?<br />
-                <span className="font-bold">UX Focused:</span> Are the buttons and sections intuitive and encouraging action?<br />
-                <span className="font-bold">Web3 Alignment:</span> Does it feel “crypto-native” or too Web2?<br />
-                <span className="font-bold">Originality:</span> Is your layout unique and not just a basic template?
-            </p>
+          <h2 className="text-lg font-semibold mb-3">Evaluation Criteria</h2>
+          <p className="text-sm text-gray-800 italic mb-6 pr-8">
+            <span className="font-bold">Clarity:</span> Does the design communicate what the site is about at a glance? <br />
+            <span className="font-bold">Visual Quality:</span> Is the layout professional, modern, and aesthetically aligned with top NFT marketplaces?<br />
+            <span className="font-bold">UX Focused:</span> Are the buttons and sections intuitive and encouraging action?<br />
+            <span className="font-bold">Web3 Alignment:</span> Does it feel &ldquo;crypto-native&rdquo; or too Web2?<br />
+            <span className="font-bold">Originality:</span> Is your layout unique and not just a basic template?
+          </p>
         </div>
 
         {/* Divider */}
@@ -94,10 +95,9 @@ const BountyDetailsPage = () => {
           <div className="bg-white shadow border border-gray-200 rounded p-5 mb-6">
             <div className="flex justify-between items-center text-sm text-gray-700 mb-5">
               <div className="flex items-center space-x-2">
-                <BriefcaseBusiness className='text-[#0C9653]'/>
+                <BriefcaseBusiness className="text-[#0C9653]" />
                 <span className="font-semibold">{comments}</span>
-                <div className="flex -space-x-2">
-                </div>
+                <div className="flex -space-x-2"></div>
               </div>
               <div className="flex items-center space-x-1">
                 <span className="text-green-600 text-lg">⏱</span>

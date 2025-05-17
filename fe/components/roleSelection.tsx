@@ -3,11 +3,10 @@ import React from "react";
 import Image from "next/image";
 
 interface RoleSelectionProps {
-  mode?: "login" | "signup";
   onViewChange: (view: "main" | "more-options" | "profile") => void;
 }
 
-const RoleSelection = ({ mode, onViewChange }: RoleSelectionProps) => {
+const RoleSelection = ({ onViewChange }: RoleSelectionProps) => {
   return (
     <div className="flex items-center justify-center w-full h-full overflow-auto">
       <div className="flex flex-col items-center w-full max-w-[99%] sm:max-w-5xl p-1 sm:p-2 md:p-3 lg:p-4 my-auto">

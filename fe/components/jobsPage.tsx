@@ -1,7 +1,6 @@
 import React from 'react'
-import { MessageSquare, Bookmark, Clock } from 'lucide-react'
+import { MessageSquare, Clock } from 'lucide-react'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 
 const bounties = [
   {

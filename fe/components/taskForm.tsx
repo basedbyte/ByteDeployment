@@ -2,7 +2,7 @@
 import React from 'react'
 import { useTaskForm } from '../hooks/useTaskForm'
 
-const taskForm = () => {
+const TaskForm = () => {
   const {
     formData,
     fileInputRef,
@@ -185,7 +185,7 @@ const taskForm = () => {
                 <input 
                   id="date"
                   name="date"
-                  type="text" 
+                  type="text"  
                   placeholder="Date & time"
                   className="w-full p-3 focus:outline-none focus:ring-1 focus:ring-green-500"
                   value={formData.date}
@@ -273,4 +273,4 @@ const taskForm = () => {
   )
 }
 
-export default taskForm
+export default TaskForm
