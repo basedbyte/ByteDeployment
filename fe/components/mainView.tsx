@@ -20,7 +20,7 @@ const MainView = ({ mode, onViewChange }: MainViewProps) => {
       </h2>
 
       <div className="w-full flex flex-col items-center space-y-6">
-        {["Google", "Twitter", "Discord", "GitHub"].map((provider) => (
+        {["Google", "Twitter", "Discord", "Github"].map((provider) => (
           <button
             key={provider}
             className="flex items-center hover:bg-green-100 justify-start w-full max-w-md h-14 sm:h-[60px] border border-green-300 rounded-md py-2 px-4 transition"
